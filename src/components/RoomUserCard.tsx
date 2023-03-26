@@ -12,7 +12,9 @@ const RoomUserCard: React.FC<Props> = ({ roomUser }) => {
   React.useEffect(() => {
     if (roomUser) {
       roomUser.videoTrack?.play(ref.current!);
-      roomUser.audioTrack?.play();
+      if (!roomUser.isLocal) {
+        roomUser.audioTrack?.play();
+      }
     }
   }, [roomUser]);
 
